@@ -2,12 +2,16 @@
 
 //Boton
 var button = document.querySelector("button");
+const myText1 = document.getElementById("theDiv1");
+const myText2 = document.getElementById("theDiv2");
+const myText3 = document.getElementById("theDiv3");
+const myText4 = document.getElementById("theDiv4");
 
 //funcion que convierte a minusculas todo lo que ingreso
 const normalizeInput = (mensaje) => prompt(mensaje).trim().toLocaleLowerCase();
 
 //funcion iva
-const iva = (a) => a * 0.21;
+const iva = (a) => a * 1.21;
 
 //funcion distancia, en donde se calcula entre varias zonas
 const distancia = () => {
@@ -32,7 +36,16 @@ const distancia = () => {
   } while (isNaN(precioZona));
 };
 
+//pushear
+const pushear = () =>
+  pedidosRealizados.push(
+    new pedidosRealizados(precioZona, precioProducto, descuento, precioFinal)
+  );
 
+//array de objetos
+var historialVentas = [
+  { precioProducto: 10, precioZona: 10, descuento: 10, precioFinal: 100 },
+];
 
 //logica del boton
 button.onclick = function () {
@@ -64,6 +77,23 @@ button.onclick = function () {
             precioZona +
             "$ )"
         );
+
+        historialVentas.pop();
+        historialVentas.push({
+          precioProducto: precioProducto,
+          precioZona: precioZona,
+          descuento: descuento,
+          precioFinal: precioFinal,
+        });
+
+        for (let i = 0; i < historialVentas.length; i++) {
+          console.log(historialVentas[i]);
+        }
+
+        myText1.innerHTML = historialVentas[0].precioProducto;
+        myText2.innerHTML = historialVentas[0].precioZona;
+        myText3.innerHTML = historialVentas[0].descuento;
+        myText4.innerHTML = historialVentas[0].precioFinal;
       }
 
       let iniciar2 = normalizeInput("Desea calcular otro precio? Si/No");
