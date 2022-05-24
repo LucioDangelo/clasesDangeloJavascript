@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="simulador.css">
+    <title>Simulador</title>
+
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>Lista de nuestros autos en venta y su precio</h1>
+            <button id="buttonMenos">Autos a menos de 15k dolares</button>            
+            <button id="buttonTodos">Todos los autos</button>
+            <button id="buttonMas">Autos a mas de 15k dolares</button>            
+            <table>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Precio en Dolares</th>
+                </tr>
+
+                <tbody id="autosTodos"></tbody>
+            </table>
+
+            <h1>Busca el precio en el buscador de arriba para calcular el precio final</h1>
+            <button id="buttonCalcular">Calcular</button>
+            <img src="mapa.png" />
+            <h3>Precio del Producto sin IVA:<div id="theDiv1"></div>
+            </h3>
+            <h3>Costo de Envio<div id="theDiv2"></div>
+            </h3>
+            <h3>Descuento<div id="theDiv3"></div>
+            </h3>
+            <h3>Precio Final<div id="theDiv4"></div>
+            </h3>
+            <h3>Si no desea abonar el costo de envio puede buscarlo en el local mas cercano a su zona<div id="theDiv5">
+                </div>
+            </h3>
+            <h3>Link a Google Maps<div id="theDiv6"></div>
+            </h3>
+        </header>
+    </div>
+
+    <script src="simuladorinteractivo.js"></script>
+</body>
+
+</html>
