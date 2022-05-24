@@ -183,6 +183,7 @@ button.onclick = function () {
       let iniciar2 = normalizeInput("Desea calcular otro precio? Si/No");
       iniciar = iniciar + iniciar2;
     } while (!iniciar.includes("no"));
+    button.classList.add('nuevaClase');
   } else {
     alert("Vuelva pronto");
   }

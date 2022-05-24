@@ -7,7 +7,9 @@ button {
     color: black;
     border: 2px solid black;
     font-size: 20px;
-    text-align: center; 
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
   #container {
     text-align: center;
@@ -24,4 +26,8 @@ table, th, td {
   margin-left: auto;
   margin-right: auto;
   border: 1px solid;
+}
+.nuevaClase {
+  background-color: green;
+  display: none;
 }
