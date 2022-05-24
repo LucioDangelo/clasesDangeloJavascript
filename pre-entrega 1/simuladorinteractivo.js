@@ -85,17 +85,15 @@ const autosDisponibles = [
   { id: 3, marca: "FERRARI", modelo: "C1", precio: 30000 },
 ];
 
-//const todos = autosDisponibles.filter(auto => auto.precio < 201)
-
 //logica de la lista de precios
 buttonTodos.onclick = function () {
   let agregar = "";
   const listaAutos = autosDisponibles.map((auto) => auto);
   console.log(listaAutos);
   for (let i = 0; i < listaAutos.length; i++) {
-    raul = listaAutos[i];
-    console.log(raul);
-    agregar += `<tr><td>${raul.modelo}</td><td>${raul.marca}</td><td>${raul.precio}</td></tr>`;
+    autos = listaAutos[i];
+    console.log(autos);
+    agregar += `<tr><td>${autos.modelo}</td><td>${autos.marca}</td><td>${autos.precio}</td></tr>`;
   }
   autos1.innerHTML = agregar;
 };
@@ -106,9 +104,9 @@ buttonMenos.onclick = function () {
   const listaAutos = autosDisponibles.filter((auto) => auto.precio < 15000);
   console.log(listaAutos);
   for (let i = 0; i < listaAutos.length; i++) {
-    raul = listaAutos[i];
-    console.log(raul);
-    agregar += `<tr><td>${raul.modelo}</td><td>${raul.marca}</td><td>${raul.precio}</td></tr>`;
+    autos = listaAutos[i];
+    console.log(autos);
+    agregar += `<tr><td>${autos.modelo}</td><td>${autos.marca}</td><td>${autos.precio}</td></tr>`;
   }
   autos1.innerHTML = agregar;
 };
@@ -119,9 +117,9 @@ buttonMas.onclick = function () {
   const listaAutos = autosDisponibles.filter((auto) => auto.precio > 15000);
   console.log(listaAutos);
   for (let i = 0; i < listaAutos.length; i++) {
-    raul = listaAutos[i];
-    console.log(raul);
-    agregar += `<tr><td>${raul.modelo}</td><td>${raul.marca}</td><td>${raul.precio}</td></tr>`;
+    autos = listaAutos[i];
+    console.log(autos);
+    agregar += `<tr><td>${autos.modelo}</td><td>${autos.marca}</td><td>${autos.precio}</td></tr>`;
   }
   autos1.innerHTML = agregar;
 };
