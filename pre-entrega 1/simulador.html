@@ -9,10 +9,11 @@
 <body>
     <div id="container">
         <header>
-            <h1>Lista de nuestros autos en venta y su precio</h1>
-            <button id="buttonMenos">Autos a menos de 15k dolares</button>            
+            <h1>Compra tu 0km en 3 simples pasos</h1>
+            <h1>Paso 1: Selecciona tu 0km</h1>
+            <button id="buttonMenos">Autos a menos de 15k dolares</button>
             <button id="buttonTodos">Todos los autos</button>
-            <button id="buttonMas">Autos a mas de 15k dolares</button>            
+            <button id="buttonMas">Autos a mas de 15k dolares</button>
             <table>
                 <tr>
                     <th>Modelo</th>
@@ -23,7 +24,7 @@
                 <tbody id="autosTodos"></tbody>
             </table>
 
-            <h1>Busca el precio en el buscador de arriba para calcular el precio final</h1>
+            <h1>Paso 2: una vez elegido el 0km, calcula el precio final</h1>
             <button id="buttonCalcular">Calcular</button>
             <br></br>
             <img src="mapa.png" />
@@ -40,6 +41,23 @@
             </h3>
             <h3>Link a Google Maps<div id="theDiv6"></div>
             </h3>
+
+            <h1>Paso 3: Reserva tu 0km</h1>
+            <form id="formulario">
+                <label for="name">Nombre y Apellido:</label><br>
+                <input type="text" id="form-name" name="name"><br>
+                <label for="email">Email:</label><br>
+                <input type="text" id="email" name="email"><br>
+                <label for="auto">Auto deseado:</label><br>
+                <input type="radio" id="bmw" name="auto" value="bmw">
+                <label for="bmw">BMW</label><br>
+                <input type="radio" id="audi" name="auto" value="audi">
+                <label for="audi">AUDI</label><br>
+                <input type="radio" id="ferrari" name="auto" value="ferrari">
+                <label for="ferrari">FERRARI</label><br>
+                <input type="submit" value="Submit">
+            </form>
+
         </header>
     </div>
 

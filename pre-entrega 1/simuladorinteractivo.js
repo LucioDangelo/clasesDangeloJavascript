@@ -6,14 +6,14 @@ const buttonMas = document.getElementById("buttonMas");
 const buttonTodos = document.getElementById("buttonTodos");
 const buttonMenos = document.getElementById("buttonMenos");
 const button = document.getElementById("buttonCalcular");
-const myText1 = document.getElementById("theDiv1");
-const myText2 = document.getElementById("theDiv2");
-const myText3 = document.getElementById("theDiv3");
-const myText4 = document.getElementById("theDiv4");
-const myText5 = document.getElementById("theDiv5");
-const myText6 = document.getElementById("theDiv6");
-const myText7 = document.getElementById("theDiv7");
+const TextPrecioProducto = document.getElementById("theDiv1");
+const TextCostoEnvio = document.getElementById("theDiv2");
+const TextDescuento = document.getElementById("theDiv3");
+const TextPrecioFinal = document.getElementById("theDiv4");
+const TextLocalCercano = document.getElementById("theDiv5");
+const TextMapLink = document.getElementById("theDiv6");
 const autos1 = document.getElementById("autosTodos");
+const formulario = document.getElementById("formulario");
 
 //funcion que convierte a minusculas todo lo que ingreso
 const normalizeInput = (mensaje) => prompt(mensaje).trim().toLocaleLowerCase();
@@ -47,11 +47,11 @@ const distancia = () => {
   } while (isNaN(precioZona));
 };
 
-//pushear
-const pushear = () =>
-  pedidosRealizados.push(
-    new pedidosRealizados(precioZona, precioProducto, descuento, precioFinal)
-  );
+// pushear
+// const pushear = () =>
+//   pedidosRealizados.push(
+//     new pedidosRealizados(precioZona, precioProducto, descuento, precioFinal)
+//   );
 
 //array de objetos
 var historialVentas = [
@@ -124,6 +124,16 @@ buttonMas.onclick = function () {
   autos1.innerHTML = agregar;
 };
 
+//Submit del Form de reserva
+
+const validarFormulario = (e) => {
+  e.preventDefault();
+  alert("Gracias por tu reserva, te responderemos a la brevedad");
+};
+
+
+formulario.addEventListener("submit", validarFormulario);
+
 //logica del boton
 button.onclick = function () {
   let iniciar = normalizeInput("Desea calcular un precio? Si/No");
@@ -172,18 +182,18 @@ button.onclick = function () {
           console.log(historialVentas[i]);
         }
 
-        myText1.innerHTML = historialVentas[0].precioProducto;
-        myText2.innerHTML = historialVentas[0].precioZona;
-        myText3.innerHTML = historialVentas[0].descuento;
-        myText4.innerHTML = historialVentas[0].precioFinal;
-        myText5.innerHTML = retirar.direccion;
-        myText6.innerHTML = retirar.link;
+        TextPrecioProducto.innerHTML = historialVentas[0].precioProducto + " $";
+        TextCostoEnvio.innerHTML = historialVentas[0].precioZona + " $";
+        TextDescuento.innerHTML = historialVentas[0].descuento + " $";
+        TextPrecioFinal.innerHTML = historialVentas[0].precioFinal + " $";
+        TextLocalCercano.innerHTML = retirar.direccion;
+        TextMapLink.innerHTML = retirar.link;
       }
 
       let iniciar2 = normalizeInput("Desea calcular otro precio? Si/No");
       iniciar = iniciar + iniciar2;
     } while (!iniciar.includes("no"));
-    button.classList.add('nuevaClase');
+    button.classList.add("nuevaClase");
   } else {
     alert("Vuelva pronto");
   }
