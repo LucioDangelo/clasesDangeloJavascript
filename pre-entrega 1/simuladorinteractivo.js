@@ -2,9 +2,9 @@
 //const button = document.getElementById("buttonCalcular");
 
 //botones del paso 1
-const buttonMas = document.getElementById("buttonMas");
-const buttonTodos = document.getElementById("buttonTodos");
-const buttonMenos = document.getElementById("buttonMenos");
+const btnMas = document.getElementById("buttonMas");
+const btnTodos = document.getElementById("buttonTodos");
+const btnMenos = document.getElementById("buttonMenos");
 const tablaHabitaciones = document.getElementById("habitacionesTodos");
 const btnGuardar = document.getElementById("btnGuardar");
 const btnBorrar = document.getElementById("btnBorrar");
@@ -33,7 +33,7 @@ const habitacionesDisponibles = [
 ];
 
 //logica de la lista de precios
-buttonTodos.onclick = function () {
+btnTodos.onclick = function () {
   let agregar = "";
   const listaHabitacion = habitacionesDisponibles.map(
     (habitacion) => habitacion
@@ -62,7 +62,7 @@ funcionRepetida = (listaHabitacion) => {
 };
 
 //logica de la lista de precios menores a 15k
-buttonMenos.onclick = function () {
+btnMenos.onclick = function () {
   const listaHabitacion = habitacionesDisponibles.filter(
     (habitacion) => habitacion.precio < 31000
   );
@@ -70,7 +70,7 @@ buttonMenos.onclick = function () {
 };
 
 //logica de la lista de precios mayores a 15k
-buttonMas.onclick = function () {
+btnMas.onclick = function () {
   const listaHabitacion = habitacionesDisponibles.filter(
     (habitacion) => habitacion.precio > 31000
   );
@@ -80,25 +80,25 @@ buttonMas.onclick = function () {
 //Botones para seleccionar habitacion
 btnGuardar.addEventListener("click", () => {
   let val = document.getElementById("valorInput").value;
-  localStorage.setItem("valorEnLS", val);
+  sessionStorage.setItem("valorEnLS", val);
 
   let desayuno = document.getElementById("valorInputDesayuno").value;
-  localStorage.setItem("valorDesayuno", desayuno);
+  sessionStorage.setItem("valorDesayuno", desayuno);
 
   let mes = document.getElementById("valorInputMes").value;
-  localStorage.setItem("valorMes", mes);
+  sessionStorage.setItem("valorMes", mes);
 
   document.getElementById("valorInput").value = "";
   document.getElementById("valorInputDesayuno").value = "";
   document.getElementById("valorInputMes").value = "";
 
-  let val2 = localStorage.getItem("valorEnLS");
+  let val2 = sessionStorage.getItem("valorEnLS");
   document.getElementById("valorDesdeLS").innerHTML = val2;
 
-  let desayuno2 = localStorage.getItem("valorDesayuno");
+  let desayuno2 = sessionStorage.getItem("valorDesayuno");
   document.getElementById("valorDesdeLSDesayuno").innerHTML = desayuno2;
 
-  let mes2 = localStorage.getItem("valorMes");
+  let mes2 = sessionStorage.getItem("valorMes");
   document.getElementById("valorDesdeLSMes").innerHTML = mes2;
 
   document.getElementById("mitad").classList.remove("d-none");
@@ -108,18 +108,18 @@ btnBorrar.addEventListener("click", () => {
   document.getElementById("valorDesdeLS").innerHTML = "";
   document.getElementById("valorDesdeLSDesayuno").innerHTML = "";
   document.getElementById("valorDesdeLSMes").innerHTML = "";
-  localStorage.clear();
+  sessionStorage.clear();
   document.getElementById("mitad").classList.add("d-none");
 });
 
 const normalizar = () => {
-  let val3 = localStorage.getItem("valorEnLS");
+  let val3 = sessionStorage.getItem("valorEnLS");
   val4 = val3.trim().toLocaleLowerCase();
 
-  let val5 = localStorage.getItem("valorDesayuno");
+  let val5 = sessionStorage.getItem("valorDesayuno");
   val6 = val5.trim().toLocaleLowerCase();
 
-  let val7 = localStorage.getItem("valorMes");
+  let val7 = sessionStorage.getItem("valorMes");
   val8 = val7.trim().toLocaleLowerCase();
 };
 
@@ -302,18 +302,18 @@ btnReservar.addEventListener("click", () => {
   let nombreApellido = document.getElementById(
     "valorInputNombreApellido"
   ).value;
-  localStorage.setItem("NombreApellido", nombreApellido);
+  sessionStorage.setItem("NombreApellido", nombreApellido);
   document.getElementById("valorInputNombreApellido").value = "";
 
   let mail = document.getElementById("valorInputMail").value;
-  localStorage.setItem("valorMail", mail);
+  sessionStorage.setItem("valorMail", mail);
   document.getElementById("valorInputMail").value = "";
 
-  let valNombreApellido = localStorage.getItem("NombreApellido");
-  let valMail = localStorage.getItem("valorMail");
-  let valHabitacion = localStorage.getItem("valorEnLS");
-  let valDesayuno = localStorage.getItem("valorDesayuno");
-  let valMes = localStorage.getItem("valorMes");
+  let valNombreApellido = sessionStorage.getItem("NombreApellido");
+  let valMail = sessionStorage.getItem("valorMail");
+  let valHabitacion = sessionStorage.getItem("valorEnLS");
+  let valDesayuno = sessionStorage.getItem("valorDesayuno");
+  let valMes = sessionStorage.getItem("valorMes");
 
   if (valNombreApellido == "" || valMail == "") {
     document.getElementById("valorDesdeNombreApellido").innerHTML =
