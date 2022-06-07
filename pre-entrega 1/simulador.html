@@ -3,65 +3,126 @@
 <head>
     <link rel="stylesheet" href="simulador.css">
     <title>Simulador</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 </head>
 
 <body>
     <div id="container">
         <header>
-            <h1>Compra tu 0km en 3 simples pasos</h1>
-            <h1>Paso 1: Selecciona tu 0km</h1>
-            <button id="buttonMenos">Autos a menos de 15k dolares</button>
-            <button id="buttonTodos">Todos los autos</button>
-            <button id="buttonMas">Autos a mas de 15k dolares</button>
-            <table>
-                <tr>
-                    <th>Modelo</th>
-                    <th>Marca</th>
-                    <th>Precio en Dolares</th>
-                </tr>
-
-                <tbody id="autosTodos"></tbody>
-            </table>
-
-            <h1>Paso 2: una vez elegido el 0km, calcula el precio final</h1>
-            <button id="buttonCalcular">Calcular</button>
+            <h1>HOTEL LUXOR</h1>
             <br></br>
-            <img src="mapa.png" />
-            <h3>Precio del Producto sin IVA:<div id="theDiv1"></div>
-            </h3>
-            <h3>Costo de Envio<div id="theDiv2"></div>
-            </h3>
-            <h3>Descuento<div id="theDiv3"></div>
-            </h3>
-            <h3>Precio Final<div id="theDiv4"></div>
-            </h3>
-            <h3>Si no desea abonar el costo de envio puede buscarlo en el local mas cercano a su zona<div id="theDiv5">
-                </div>
-            </h3>
-            <h3>Link a Google Maps<div id="theDiv6"></div>
-            </h3>
+            <div id="principio" class="">
+                <h1>Paso 1: Encontra la habitacion</h1>
+                <button id="buttonMenos">Habitaciones economicas</button>
+                <button id="buttonTodos">Todos las habitaciones</button>
+                <button id="buttonMas">Habitaciones Lujosas</button>
+                <table>
+                    <tr>
+                        <th>Habitacion</th>
+                        <th>Vista a la playa</th>
+                        <th>Precio</th>
+                    </tr>
 
-            <h1>Paso 3: Reserva tu 0km</h1>
-            <form id="formulario">
-                <label for="name">Nombre y Apellido:</label><br>
-                <input type="text" id="form-name" name="name"><br>
-                <label for="email">Email:</label><br>
-                <input type="text" id="email" name="email"><br>
-                <label for="auto">Auto deseado:</label><br>
-                <input type="radio" id="bmw" name="auto" value="bmw">
-                <label for="bmw">BMW</label><br>
-                <input type="radio" id="audi" name="auto" value="audi">
-                <label for="audi">AUDI</label><br>
-                <input type="radio" id="ferrari" name="auto" value="ferrari">
-                <label for="ferrari">FERRARI</label><br>
-                <input type="submit" value="Submit">
-            </form>
+                    <tbody id="habitacionesTodos"></tbody>
+                </table>
+                <br></br>
+                <img src="hoteles.png" />
+                <br></br>
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="valorInput"></label>
+                                    <input type="text" class="form-control" placeholder="Ingresa la habitacion deseada"
+                                        aria-label="Username" aria-describedby="basic-addon1" id="valorInput">
+                                    <input type="text" class="form-control" placeholder="Desayuno incluido? si/no"
+                                        aria-label="Username" aria-describedby="basic-addon1" id="valorInputDesayuno">
+                                    <input type="text" class="form-control" placeholder="Mes de hospedaje"
+                                        aria-label="Username" aria-describedby="basic-addon1" id="valorInputMes">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="btn btn-group">
+                            <button id="btnGuardar" type="button" class="btn btn-outline-success">Guardar
+                                Seleccion</button>
+                            <button id="btnBorrar" type="button" class="btn btn-outline-danger">Borrar
+                                Seleccion</button>
+                        </div>
+                    </div>
+                    <br></br>
+                    <h2><span id="valorDesdeLS" class="badge bg-success"></span>
+                        <span id="valorDesdeLSDesayuno" class="badge bg-success"></span>
+                        <span id="valorDesdeLSMes" class="badge bg-success"></span>
+                    </h2>
+                    <h2><span id="ErrorHabitacion" class="d-none badge bg-danger">Ingresa una habitacion correcta</span>
+                        <span id="ErrorMes" class="d-none badge bg-danger">Ingresa un mes correcto</span>
+                    </h2>
+                </div>
+                <br></br>
+                <br></br>
+                <br></br>
+
+            </div>
+            <div id="mitad" class="d-none">
+
+
+                <h1>Paso 2: una vez guardada la seleccion hacer click en el boton</h1>
+                <div class="btn btn-group">
+                    <button id="buttonHabitacion" type="button" class="btn btn-outline-success">Calcular</button>
+                </div>
+                <button id="buttonCalcular">Calcular</button>
+                <br></br>
+                <h3>Nombre de la habitacion:<div id="Div1"></div>
+                </h3>
+                <h3>Precio de la habitacion<div id="Div2"></div>
+                </h3>
+                <h3>Vista a la playa?<div id="Div3"></div>
+                </h3>
+                <h3>Desayuno Incluido?<div id="Div4"></div>
+                </h3>
+                <h3>Mes de Hospedaje<div id="Div5"></div>
+                </h3>
+                <h3>Precio Total<div id="Div6"></div>
+                </h3>
+                <br></br>
+                <br></br>
+            </div>
+            <div id="final" class="d-none">
+
+
+
+                <h1>Paso 3: Reserva tu habitacion</h1>
+                <form id="formulario">
+                    <label for="name">Nombre y Apellido:</label><br>
+                    <input type="text" id="valorInputNombreApellido" name="name"><br>
+                    <label for="email">Email:</label><br>
+                    <input type="text" id="valorInputMail" name="email"><br>
+                    <button id="btnReservar" type="button" class="btn btn-outline-success">Reservar Habitacion</button>
+                </form>
+                <h2>
+                    <span id="valorDesdeNombreApellido" class="badge bg-success"></span>
+                    <span id="valorDesdeNombreApellido2" class="badge bg-success"></span>
+                    <span id="valorDesdeNombreApellido3" class="badge bg-success"></span>
+                </h2>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+            </div>
 
         </header>
     </div>
 
     <script src="simuladorinteractivo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>
