@@ -32,6 +32,19 @@ const habitacionesDisponibles = [
   { id: 5, playa: "Si", habitacion: "San Martin", precio: 50000 },
 ];
 
+//desestructuracion
+var habitacionReservada = {
+  nombreHabitacion: 1,
+  mesHabitacion: 1,
+  nombreUsuario: 1,
+}
+var {
+  nombreHabitacion: habitacion,
+  mesHabitacion: mes,
+  nombreUsuario: nombre,
+} = habitacionReservada
+
+
 //logica de la lista de precios
 btnTodos.onclick = function () {
   let agregar = "";
@@ -66,7 +79,7 @@ btnMenos.onclick = function () {
   const listaHabitacion = habitacionesDisponibles.filter(
     (habitacion) => habitacion.precio < 31000
   );
-  funcionRepetida(listaHabitacion);
+  funcionRepetida(listaHabitacion || "No existen precios menores a 30.000$" );
 };
 
 //logica de la lista de precios mayores a 15k
@@ -74,7 +87,7 @@ btnMas.onclick = function () {
   const listaHabitacion = habitacionesDisponibles.filter(
     (habitacion) => habitacion.precio > 31000
   );
-  funcionRepetida(listaHabitacion);
+  funcionRepetida(listaHabitacion || "No existen precios mayores a 30.000$");
 };
 
 //Botones para seleccionar habitacion
@@ -253,10 +266,24 @@ var historialReservas = [
     vistaAlaPlaya: 10,
     desayuno: 100,
     precioTemporada: 10,
-    precioTotal: 10,
+    precioTotal: 0,
     mesDeReserva: 10,
   },
 ];
+
+//funcion desestructurar
+const desestructurar = (historialReservas) => {
+  const { habitacion1: habitacion,
+    precioHabitacion: precio,
+    vistaAlaPlaya: playita,
+    desayuno: desayuno,
+    precioTemporada: temporada,
+    precioTotal: total,
+    mesDeReserva: reserva, } = historialReservas;
+  console.log(habitacion1);
+};
+
+//const { habitacion1, precioHabitacion, vistaAlaPlaya, desayuno, precioTemporada, precioTotal, mesDeReserva} = historialReservas
 
 //funcionalidad del boton, solo aparece si se completo el paso 1
 calcularHabitacion.onclick = function () {
@@ -267,13 +294,17 @@ calcularHabitacion.onclick = function () {
   console.log(vistaAlaPlaya);
   console.log(desayuno);
   console.log(precioTemporada);
+ 
+
+
+   if (desayuno == "no") {
+     var precioTotal = iva(precioHabitacion * precioTemporada);
+   } else {
+     var precioTotal = iva((precioHabitacion + 1000) * precioTemporada);
+   }
+
   console.log(precioTotal);
 
-  if (desayuno == "no") {
-    var precioTotal = iva(precioHabitacion * precioTemporada);
-  } else {
-    var precioTotal = iva((precioHabitacion + 1000) * precioTemporada);
-  }
 
   historialReservas.pop();
   historialReservas.push({
@@ -285,6 +316,13 @@ calcularHabitacion.onclick = function () {
     precioTotal: precioTotal,
     mesDeReserva: mesDeReserva,
   });
+
+  console.log(historialReservas);
+
+  //desestructurar parametros 
+  desestructurar(historialReservas);
+
+
 
   TextNombreHabitacion.innerHTML = historialReservas[0].habitacion1;
   TextPrecioHabitacion.innerHTML = historialReservas[0].precioHabitacion + " $";
@@ -315,6 +353,8 @@ btnReservar.addEventListener("click", () => {
   let valDesayuno = sessionStorage.getItem("valorDesayuno");
   let valMes = sessionStorage.getItem("valorMes");
 
+
+  //Uso de operador logico OR
   if (valNombreApellido == "" || valMail == "") {
     document.getElementById("valorDesdeNombreApellido").innerHTML =
       "Completar todos los campos.";
@@ -335,4 +375,12 @@ btnReservar.addEventListener("click", () => {
       ".";
     document.getElementById("mitad").classList.add("d-none");
   }
+
+  //uso de alias con desestructuracion para futuro guardado de datos interno una vez realizada la reserva
+  habitacion = valHabitacion;
+  mes = valMes;
+  nombre = valNombreApellido;
+  console.log("Nombre de habitacion:" + habitacion +".");
+  console.log("Mes de reserva:" + mes +".");
+  console.log("Reserva a nombre de:" + nombre +".");
 });
