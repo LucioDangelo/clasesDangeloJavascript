@@ -37,13 +37,12 @@ var habitacionReservada = {
   nombreHabitacion: 1,
   mesHabitacion: 1,
   nombreUsuario: 1,
-}
+};
 var {
   nombreHabitacion: habitacion,
   mesHabitacion: mes,
   nombreUsuario: nombre,
-} = habitacionReservada
-
+} = habitacionReservada;
 
 //logica de la lista de precios
 btnTodos.onclick = function () {
@@ -79,7 +78,7 @@ btnMenos.onclick = function () {
   const listaHabitacion = habitacionesDisponibles.filter(
     (habitacion) => habitacion.precio < 31000
   );
-  funcionRepetida(listaHabitacion || "No existen precios menores a 30.000$" );
+  funcionRepetida(listaHabitacion || "No existen precios menores a 30.000$");
 };
 
 //logica de la lista de precios mayores a 15k
@@ -273,13 +272,15 @@ var historialReservas = [
 
 //funcion desestructurar
 const desestructurar = (historialReservas) => {
-  const { habitacion1: habitacion,
+  const {
+    habitacion1: habitacion,
     precioHabitacion: precio,
     vistaAlaPlaya: playita,
     desayuno: desayuno,
     precioTemporada: temporada,
     precioTotal: total,
-    mesDeReserva: reserva, } = historialReservas;
+    mesDeReserva: reserva,
+  } = historialReservas;
   console.log(habitacion1);
 };
 
@@ -294,17 +295,14 @@ calcularHabitacion.onclick = function () {
   console.log(vistaAlaPlaya);
   console.log(desayuno);
   console.log(precioTemporada);
- 
 
-
-   if (desayuno == "no") {
-     var precioTotal = iva(precioHabitacion * precioTemporada);
-   } else {
-     var precioTotal = iva((precioHabitacion + 1000) * precioTemporada);
-   }
+  if (desayuno == "no") {
+    var precioTotal = iva(precioHabitacion * precioTemporada);
+  } else {
+    var precioTotal = iva((precioHabitacion + 1000) * precioTemporada);
+  }
 
   console.log(precioTotal);
-
 
   historialReservas.pop();
   historialReservas.push({
@@ -319,10 +317,8 @@ calcularHabitacion.onclick = function () {
 
   console.log(historialReservas);
 
-  //desestructurar parametros 
+  //desestructurar parametros
   desestructurar(historialReservas);
-
-
 
   TextNombreHabitacion.innerHTML = historialReservas[0].habitacion1;
   TextPrecioHabitacion.innerHTML = historialReservas[0].precioHabitacion + " $";
@@ -353,26 +349,47 @@ btnReservar.addEventListener("click", () => {
   let valDesayuno = sessionStorage.getItem("valorDesayuno");
   let valMes = sessionStorage.getItem("valorMes");
 
-
   //Uso de operador logico OR
   if (valNombreApellido == "" || valMail == "") {
-    document.getElementById("valorDesdeNombreApellido").innerHTML =
-      "Completar todos los campos.";
+    Swal.fire({
+      title: "Completar todos los campos",
+      text: "Completar con Nombre y Apellido, y con su Email.",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+    //document.getElementById("valorDesdeNombreApellido").innerHTML =
+    //  "Completar todos los campos.";
   } else {
-    document.getElementById("valorDesdeNombreApellido").innerHTML =
-      "RESERVA A NOMBRE DE: " + valNombreApellido + " REALIZADA CON EXITO.";
-    document.getElementById("valorDesdeNombreApellido2").innerHTML =
-      "HABITACION: " +
-      valHabitacion +
-      " ,CON DESAYUNO INCLUIDO? " +
-      valDesayuno +
-      ".";
-    document.getElementById("valorDesdeNombreApellido3").innerHTML =
-      "EN EL MES DE: " +
-      valMes +
-      ". RECIBIRA LA CONFIRMACION AL MAIL: " +
-      valMail +
-      ".";
+    //PASO DE USAR CAMBIOS EN DIVS, A USAR SWEET ALERT
+    Swal.fire({
+      title: "La operacion ha sido exitosa",
+      text:
+        "Reserva a nombre de: " +
+        valNombreApellido +
+        ". Reserva la habitacion: " +
+        valHabitacion +
+        ". Para el mes de: " +
+        valMes +
+        ". Recibira la confirmacion al mail: " +
+        valMail +
+        ".",
+      icon: "success",
+      confirmButtonText: "Ok",
+    });
+    // document.getElementById("valorDesdeNombreApellido").innerHTML =
+    //   "RESERVA A NOMBRE DE: " + valNombreApellido + " REALIZADA CON EXITO.";
+    // document.getElementById("valorDesdeNombreApellido2").innerHTML =
+    //   "HABITACION: " +
+    //   valHabitacion +
+    //   " ,CON DESAYUNO INCLUIDO? " +
+    //   valDesayuno +
+    //   ".";
+    // document.getElementById("valorDesdeNombreApellido3").innerHTML =
+    //   "EN EL MES DE: " +
+    //   valMes +
+    //   ". RECIBIRA LA CONFIRMACION AL MAIL: " +
+    //   valMail +
+    //   ".";
     document.getElementById("mitad").classList.add("d-none");
   }
 
@@ -380,7 +397,7 @@ btnReservar.addEventListener("click", () => {
   habitacion = valHabitacion;
   mes = valMes;
   nombre = valNombreApellido;
-  console.log("Nombre de habitacion:" + habitacion +".");
-  console.log("Mes de reserva:" + mes +".");
-  console.log("Reserva a nombre de:" + nombre +".");
+  console.log("Nombre de habitacion:" + habitacion + ".");
+  console.log("Mes de reserva:" + mes + ".");
+  console.log("Reserva a nombre de:" + nombre + ".");
 });
