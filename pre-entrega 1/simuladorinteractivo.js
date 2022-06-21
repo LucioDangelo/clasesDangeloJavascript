@@ -334,14 +334,14 @@ calcularHabitacion.onclick = function () {
 //funcionalidad del boton de reserva, solo aparece si se completo el paso 2
 btnReservar.addEventListener("click", () => {
   let nombreApellido = document.getElementById(
-    "valorInputNombreApellido"
+    "name"
   ).value;
   sessionStorage.setItem("NombreApellido", nombreApellido);
-  document.getElementById("valorInputNombreApellido").value = "";
+  document.getElementById("name").value = "";
 
-  let mail = document.getElementById("valorInputMail").value;
+  let mail = document.getElementById("email").value;
   sessionStorage.setItem("valorMail", mail);
-  document.getElementById("valorInputMail").value = "";
+  document.getElementById("email").value = "";
 
   let valNombreApellido = sessionStorage.getItem("NombreApellido");
   let valMail = sessionStorage.getItem("valorMail");
@@ -401,3 +401,20 @@ btnReservar.addEventListener("click", () => {
   console.log("Mes de reserva:" + mes + ".");
   console.log("Reserva a nombre de:" + nombre + ".");
 });
+
+
+
+//const lista = document.querySelector("#listado");
+
+// fetch("https://jsonplaceholder.typicode.com/posts")
+//   .then((resp) => resp.json())
+//   .then((data) => {
+//     data.forEach((post) => {
+//       const li = document.createElement("li");
+//       li.innerHTML = `
+//       <h4>${post.title}</h4>
+//       <p>${post.title}</p>
+//       `;
+//       lista.append(li);
+//     });
+//   });

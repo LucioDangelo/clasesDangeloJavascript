@@ -32,6 +32,11 @@
                 <br></br>
                 <img src="hoteles.png" />
                 <br></br>
+                <h2>Posts!</h2>
+                <hr />
+                <ul id="listado">
+                </ul>
+                <br></br>
                 <div class="container">
                     <div class="row">
                         <div class="col">
@@ -75,7 +80,7 @@
                 <div class="btn btn-group">
                     <button id="buttonHabitacion" type="button" class="btn btn-outline-success">Calcular</button>
                 </div>
-                <button id="buttonCalcular">Calcular</button>
+                <!-- <button id="buttonCalcular">Calcular</button> -->
                 <br></br>
                 <h3>Nombre de la habitacion:<div id="Div1"></div>
                 </h3>
@@ -97,13 +102,26 @@
 
 
                 <h1>Paso 3: Reserva tu habitacion</h1>
+
                 <form id="formulario">
-                    <label for="name">Nombre y Apellido:</label><br>
-                    <input type="text" id="valorInputNombreApellido" name="name"><br>
-                    <label for="email">Email:</label><br>
-                    <input type="text" id="valorInputMail" name="email"><br>
-                    <button id="btnReservar" type="button" class="btn btn-outline-success">Reservar Habitacion</button>
+                    <div class="field">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" name="name" id="valorInputNombreApellido">
+                    </div>
+                    <div class="field">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <input type="submit" id="btnReservar" value="Reservar Habitacion">
                 </form>
+
+                <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+                </script>
+
+                <script type="text/javascript">
+                    emailjs.init('pMJZyZE7_wUuGSS1m')
+                </script>
+
                 <h2>
                     <span id="valorDesdeNombreApellido" class="badge bg-success"></span>
                     <span id="valorDesdeNombreApellido2" class="badge bg-success"></span>
@@ -124,8 +142,33 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    
-    
+
+
 </body>
+
+<script>
+    const btn = document.getElementById('btnReservar');
+
+    document.getElementById('formulario')
+        .addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            btn.value = 'Enviando informacion...';
+
+            const serviceID = 'default_service';
+            const templateID = 'template_dmnabhl';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(() => {
+                    btn.value = 'Enviado';
+                    window.location.href =
+                        "file:///C:/Users/Usuario/Desktop/CursoCoder/clasesDangeloJavascript/pre-entrega%201/gracias.html";
+                }, (err) => {
+                    btn.value = 'Erorr en el envio';
+                    alert(JSON.stringify(err));
+                });
+        });
+</script>
+
 
 </html>
